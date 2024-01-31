@@ -4,7 +4,9 @@ import styles from './sql.module.scss';
 
 
 const getData = async () => {
-    const res = await fetch('http://localhost:3000/api/home')
+    console.log('==process.env.NODE_ENV', process.env.NODE_ENV)
+    const host = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://react-next-sql-example-git-main-tomorrowisbetters-projects.vercel.app'
+    const res = await fetch(`${host}/api/home`)
 
     if (res.ok) {
         return res.json();
